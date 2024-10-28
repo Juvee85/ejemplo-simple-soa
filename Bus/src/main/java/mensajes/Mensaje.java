@@ -3,40 +3,26 @@
  */
 package mensajes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * 
- * @author Juventino López García - 00000248547 - 27/10/2024
+ * @author Juventino López García - 00000248547 - 28/10/2024
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.DEDUCTION)
+@JsonSubTypes({
+    @JsonSubTypes.Type(MensajeOperacion.class),
+    @JsonSubTypes.Type(MensajeRegistro.class),
+    @JsonSubTypes.Type(MensajeResultado.class)}
+)
 public class Mensaje {
 
-    private String tipo;
+    protected String tipo;
     
-    private float numero1;
-    
-    private float numero2;
-
-    public String getTipo() {
+     public String getTipo() {
         return tipo;
     }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public float getNumero1() {
-        return numero1;
-    }
-
-    public void setNumero1(float numero1) {
-        this.numero1 = numero1;
-    }
-
-    public float getNumero2() {
-        return numero2;
-    }
-
-    public void setNumero2(float numero2) {
-        this.numero2 = numero2;
-    }
-    
 }

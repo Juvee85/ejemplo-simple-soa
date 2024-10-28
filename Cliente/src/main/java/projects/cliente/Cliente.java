@@ -30,7 +30,7 @@ public class Cliente {
                 conexion.solicitarResta(tec.nextFloat(), tec.nextFloat());
             }
             
-            
+            tec.next();
         }
     }
 }
